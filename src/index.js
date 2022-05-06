@@ -1,14 +1,9 @@
-class Square extends React.Component {
-  render() {
-    return (
-      <button
-        className="square"
-        onClick={() => this.props.onClick()}
-      >
-        {this.props.value}
-      </button>
-    );
-  }
+function Square(props) {
+  return (
+    <button className="square" onClick={props.onClick}>
+      {props.value}
+    </button>
+  );
 }
 
 class Board extends React.Component {
@@ -16,7 +11,7 @@ class Board extends React.Component {
     super(props);
     this.state = {
       squares: Array(9).fill(null),
-      xIsNext: true, 
+      xIsNext: true,
     };
   }
 
@@ -28,6 +23,7 @@ class Board extends React.Component {
       xIsNext: !this.state.xIsNext,
     });
   }
+
   renderSquare(i) {
     return (
       <Square
@@ -41,19 +37,22 @@ class Board extends React.Component {
     const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
-      // el resto no ha cambiado
-      
-    return (
       <div>
         <div className="status">{status}</div>
         <div className="board-row">
-          {this.renderSquare(0)}{this.renderSquare(1)}{this.renderSquare(2)}
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
         </div>
         <div className="board-row">
-          {this.renderSquare(3)}{this.renderSquare(4)}{this.renderSquare(5)}
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
         </div>
         <div className="board-row">
-          {this.renderSquare(6)}{this.renderSquare(7)}{this.renderSquare(8)}
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
         </div>
       </div>
     );
@@ -80,3 +79,4 @@ class Game extends React.Component {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
+
